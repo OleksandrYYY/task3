@@ -1,9 +1,10 @@
+"use strict";
 // завдання 1
 
 function iterativeOddSumTo(number) {
   let result = 0;
-  for (i = 1; i <= number; i++) {
-    if (i % 2 !== 0) {
+  for (let i = 1; i <= number; i++) {
+    if (i % 2) {
       result += i;
     }
   }
@@ -18,7 +19,7 @@ console.log(iterativeOddSumTo(10));
 function recursiveOddSumTo(number) {
   if (number <= 0) {
     return 0;
-  } else if (number % 2 !== 0) {
+  } else if (number % 2) {
     return number + recursiveOddSumTo(number - 2);
   } else {
     return recursiveOddSumTo(number - 1);
@@ -36,10 +37,19 @@ const isXOEqual = (str) => {
   let letterX = 0;
   let letterO = 0;
   for (let i = 0; i <= str.length; i++) {
-    if (str[i] === "x") {
-      letterX++;
-    } else if (str[i] === "o") {
-      letterO++;
+    // if (str[i] === "x") {
+    //   letterX++;
+    // } else if (str[i] === "o") {
+    //   letterO++;
+    // }
+    // перший варіант лишив для себе закоментований
+    switch (str[i]) {
+      case "x":
+        letterX++;
+        break;
+      case "o":
+        letterO++;
+        break;
     }
   }
   return letterX === letterO;
